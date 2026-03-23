@@ -1,7 +1,5 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from langchain_google_genai import ChatGoogleGenerativeAI
-import os
 
 
 @CrewBase
@@ -11,18 +9,10 @@ class AiResearchCrew():
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
 
-    def _get_llm(self):
-        return ChatGoogleGenerativeAI(
-            model="gemini-pro",
-            google_api_key=os.environ.get("GEMINI_API_KEY"),
-            temperature=0.3,
-        )
-
     @agent
     def researcher(self) -> Agent:
         return Agent(
             config=self.agents_config['researcher'],
-            llm=self._get_llm(),
             verbose=True
         )
 
@@ -30,7 +20,6 @@ class AiResearchCrew():
     def analyst(self) -> Agent:
         return Agent(
             config=self.agents_config['analyst'],
-            llm=self._get_llm(),
             verbose=True
         )
 
@@ -38,7 +27,6 @@ class AiResearchCrew():
     def writer(self) -> Agent:
         return Agent(
             config=self.agents_config['writer'],
-            llm=self._get_llm(),
             verbose=True
         )
 
