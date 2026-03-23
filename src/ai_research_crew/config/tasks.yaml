@@ -1,0 +1,51 @@
+research_task:
+  description: >
+    Research the following topic thoroughly: {topic}
+
+    Your research must include:
+    1. Current state and recent developments (last 6 months)
+    2. Key players, companies or individuals involved
+    3. Main challenges and opportunities
+    4. Statistics and data points when available
+    5. Expert opinions and quotes
+
+    Provide at least 5 distinct, well-sourced findings.
+  expected_output: >
+    A detailed research report with at least 5 findings, each with context and sources.
+  agent: researcher
+
+analysis_task:
+  description: >
+    Analyze the research findings about: {topic}
+
+    Your analysis must:
+    1. Identify the 3 most important trends
+    2. Highlight contradictions or debates in the field
+    3. Assess risks and opportunities
+    4. Draw connections between different findings
+    5. Provide a confidence level (low/medium/high) for each key insight
+  expected_output: >
+    A structured analysis with trends, risks, opportunities and confidence levels.
+  agent: analyst
+  context:
+    - research_task
+
+report_task:
+  description: >
+    Write a professional report on: {topic}
+
+    The report must include:
+    1. Executive Summary (3-4 sentences)
+    2. Key Findings (bullet points)
+    3. Detailed Analysis
+    4. Risks and Opportunities
+    5. Recommendations (3-5 actionable items)
+    6. Conclusion
+
+    Format it in clean Markdown. Make it suitable for a business audience.
+  expected_output: >
+    A complete professional report in Markdown format with all 6 sections.
+  agent: writer
+  context:
+    - research_task
+    - analysis_task

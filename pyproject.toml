@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ai-research-crew"
+version = "0.1.0"
+description = "Multi-agent research system with 3 specialized AI agents"
+authors = ["Ricardo Lima <ricardo.bardan@gmail.com>"]
+requires-python = ">=3.10,<3.14"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+crewai = {extras = ["tools"], version = ">=1.0.0,<2.0.0"}
+
+[tool.poetry.scripts]
+ai_research_crew = "ai_research_crew.main:run"
+train = "ai_research_crew.main:train"
+replay = "ai_research_crew.main:replay"
+test = "ai_research_crew.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
