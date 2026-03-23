@@ -13,7 +13,7 @@ class AiResearchCrew():
 
     def _get_llm(self):
         return ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-pro",
             google_api_key=os.environ.get("GEMINI_API_KEY"),
             temperature=0.3,
         )
